@@ -14,4 +14,4 @@ circleOptions = {
 };
 circle = new google.maps.Circle(circleOptions);
 /*]]>*/
-<f:if condition="{bound}">bounds.extend(circle.getCenter());</f:if>
+<f:if condition="{bound}">bounds_{contentUid}.extend(circle.getCenter());</f:if>

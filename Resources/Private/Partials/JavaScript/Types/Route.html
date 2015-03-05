@@ -3,7 +3,7 @@ var coordinatesArray = [];
 <f:for each="{poiCollection.pois}" as="route" iteration="iterator">
 	var latLng = new google.maps.LatLng({route.latitude}, {route.longitude});
 	coordinatesArray.push(latLng);
-	<f:if condition="{bound}">bounds.extend(latLng)</f:if>
+	<f:if condition="{bound}">bounds_{contentUid}.extend(latLng)</f:if>
 </f:for>
 
 /*<![CDATA[*/

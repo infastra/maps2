@@ -24,6 +24,7 @@ namespace JWeiland\Maps2\ViewHelpers\Widget\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 
 /**
@@ -55,6 +56,8 @@ class PoiCollectionsOfCategoryController extends \TYPO3\CMS\Fluid\Core\Widget\Ab
 	public function indexAction() {
 		$this->view->assign('extConf', ObjectAccess::getGettableProperties($this->extConf));
 		$this->view->assign('poiCollections', $this->poiCollections);
+    $cObj = $this->configurationManager->getContentObject();
+    $this->view->assign('contentUid', $cObj->data['uid']);
 	}
 
 }

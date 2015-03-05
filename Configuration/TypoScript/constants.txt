@@ -15,4 +15,5 @@ plugin.tx_maps2 {
 		# cat=plugin.tx_maps2//b; type=boolean; label=Include jQuery
 		includeJQueryLibrary = 1
 	}
+  filepath.lib = EXT:maps2/Resources/Public/JavaScript/maps2.lib.js
 }

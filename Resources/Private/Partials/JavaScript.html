@@ -41,38 +41,13 @@ var fillOpacity = {extConf.fillOpacity};
 			};
 			/* ]]> */
 
-			var map = new google.maps.Map(document.getElementById("maps2"), mapOptions);
+			var map_{contentUid} = new google.maps.Map(document.getElementById("maps2-{contentUid}"), mapOptions);
 
-			function createMarker(uid, pointPosition, infoWindowContent) {
-				/* <![CDATA[ */
-				var marker = new google.maps.Marker({
-					position: pointPosition,
-					map: map
-				});
-				/* ]]> */
-
-				/* <![CDATA[ */
-				infoWindow[uid] = new google.maps.InfoWindow({
-					content: infoWindowContent
-				});
-				/* ]]> */
-				infoWindowIsOpen[uid] = false;
-
-				google.maps.event.addListener( marker, "click", function() {
-					if ( infoWindowIsOpen[uid] == false ) {
-						infoWindow[uid].open( map, marker );
-						infoWindowIsOpen[uid] = true;
-					} else {
-						infoWindow[uid].close();
-						infoWindowIsOpen[uid] = false;
-					}
-				});
-			}
-			<f:render partial="JavaScript/Types/{poiCollection.collectionType}" arguments="{poiCollection: poiCollection, bound: 0}" />
+			<f:render partial="JavaScript/Types/{poiCollection.collectionType}" arguments="{poiCollection: poiCollection, bound: 0, contentUid: contentUid}" />
 		});
 	</f:then>
 	<f:else>
-		var bounds = new google.maps.LatLngBounds();
+		var bounds_{contentUid} = new google.maps.LatLngBounds();
 
 		jQuery(document).ready(function() {
 			/* <![CDATA[ */
@@ -88,40 +63,12 @@ var fillOpacity = {extConf.fillOpacity};
 			};
 			/* ]]> */
 
-			var map = new google.maps.Map(document.getElementById("maps2"), mapOptions);
-
-			function createMarker(uid, pointPosition, infoWindowContent) {
-				/* <![CDATA[ */
-				var marker = new google.maps.Marker({
-					position: pointPosition,
-					map: map
-				});
-				/* ]]> */
-
-				bounds.extend(marker.position);
-
-				/* <![CDATA[ */
-				infoWindow[uid] = new google.maps.InfoWindow({
-					content: infoWindowContent
-				});
-				/* ]]> */
-				infoWindowIsOpen[uid] = false;
-
-				google.maps.event.addListener( marker, "click", function() {
-					if ( infoWindowIsOpen[uid] == false ) {
-						infoWindow[uid].open( map, marker );
-						infoWindowIsOpen[uid] = true;
-					} else {
-						infoWindow[uid].close();
-						infoWindowIsOpen[uid] = false;
-					}
-				});
-			}
+			var map_{contentUid} = new google.maps.Map(document.getElementById("maps2-{contentUid}"), mapOptions);
 			<f:for each="{poiCollections}" as="poiCollection">
-				<f:render partial="JavaScript/Types/{poiCollection.collectionType}" arguments="{poiCollection: poiCollection, bound: 1}" />
+				<f:render partial="JavaScript/Types/{poiCollection.collectionType}" arguments="{poiCollection: poiCollection, bound: 1, contentUid: contentUid}" />
 			</f:for>
 
-			map.fitBounds(bounds);
+			map_{contentUid}.fitBounds(bounds_{contentUid});
 		});
 	</f:else>
 </f:if>

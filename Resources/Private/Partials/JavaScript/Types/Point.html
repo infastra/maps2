@@ -11,4 +11,8 @@ var pointPosition = new google.maps.LatLng({poiCollection.latitude}, {poiCollect
 		infoWindowContent = '{f:render(partial: 'InfoWindowContent', arguments: {poiCollection: poiCollection})->maps2:formatHtmlForJavaScript()}';
 	</f:else>
 </f:if>
-createMarker({poiCollection.uid}, pointPosition, infoWindowContent);
+if(typeof(bounds_{contentUid}) === 'undefined') {
+  createMarker({poiCollection.uid}, pointPosition, infoWindowContent, map_{contentUid}, null);
+} else {
+  createMarker({poiCollection.uid}, pointPosition, infoWindowContent, map_{contentUid}, bounds_{contentUid});
+}

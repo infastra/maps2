@@ -24,6 +24,7 @@ namespace JWeiland\Maps2\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 
@@ -82,6 +83,10 @@ class PoiCollectionController extends \JWeiland\Maps2\Controller\AbstractControl
 	 * @return void
 	 */
 	public function showPoisOfCategoryAction() {
+//    $cObj = $this->configurationManager->getContentObject();
+//    $this->settings['contentUid'] = $cObj->data['uid'];
+//    $this->view->assign('contentUid', $cObj->data['uid']);
+//    DebugUtility::debug($this->settings);
 		if (!empty($this->settings['categories'])) {
 			$poiCollections = $this->poiCollectionRepository->findPoisByCategories($this->settings['categories']);
 			if (!empty($poiCollections)) {
